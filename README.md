@@ -6,7 +6,7 @@ Chemical synapses in FlyWire/FAFB are annotated and searchable. **Gap junctions 
 
 It is a general tool. You give it a list of segment IDs; it gives you their contacts, the EM to judge them by, and a proofreading loop that makes your judgements stick.
 
-> **Paper:** Falt et al., *Vectorial efference copy and visuomotor transformation
+> **Paper:** Falt, Ammer et al., *Vectorial efference copy and visuomotor transformation
 > through gap junctions* — [bioRxiv](https://www.biorxiv.org/content/10.64898/2026.08.11.744090v1) ·
 > [doi:10.64898/2026.08.11.744090](https://doi.org/10.64898/2026.08.11.744090)
 >
