@@ -6,6 +6,14 @@ Chemical synapses in FlyWire/FAFB are annotated and searchable. **Gap junctions 
 
 It is a general tool. You give it a list of segment IDs; it gives you their contacts, the EM to judge them by, and a proofreading loop that makes your judgements stick.
 
+> **Paper:** Falt et al., *Vectorial efference copy and visuomotor transformation
+> through gap junctions* — [bioRxiv](https://www.biorxiv.org/content/10.64898/2026.08.11.744090v1) ·
+> [doi:10.64898/2026.08.11.744090](https://doi.org/10.64898/2026.08.11.744090)
+>
+> **This repository is the build accompanying that paper.** Development continues at
+> [ETigerschuss/MESH](https://github.com/ETigerschuss/MESH), which additionally carries
+> a biophysical circuit model of the LPTC–motor-neuron network.
+
 > **Which version is this?**
 > This is the **publication build**: contact detection, segmentation validation,
 > EM proofreading, measurement and gap-junction candidate ranking.
@@ -455,3 +463,14 @@ To add new neurons:
 
 To change the overlap distance threshold:
 - Edit `THRESHOLDS_MICRONS` in `overlap_analysis.py`
+
+## Citation
+
+If you use MESH, please cite the paper:
+
+> Falt, T., Ammer, G., Serbe-Kamp, É., Kroell, L. M., Friedrich, A. B.,
+> Guerreiro-Mota, S., Šimsová, E., & Fenk, L. M. (2026).
+> **Vectorial efference copy and visuomotor transformation through gap junctions.**
+> *bioRxiv.* [doi:10.64898/2026.08.11.744090](https://doi.org/10.64898/2026.08.11.744090)
+
+For the software itself, see [`CITATION.cff`](CITATION.cff).
