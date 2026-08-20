@@ -1,0 +1,50 @@
+# ── Pipeline output ───────────────────────────────────────────────
+# Results directories hold meshes, EM snapshots and CSVs (tens of GB).
+comprehensive_overlap_results*/
+results_*/
+neuron_meshes/
+em_snaps/
+em_snaps_graveyard/
+overlap_cache/
+
+# Generated artefacts
+*.obj
+*.html
+skeleton_em_viewer.html
+
+# Working files written during a run
+pipeline_run.pid
+proofreading_applied.log
+baseline_areas.csv
+viewer_annotations*.json
+em_measurements.csv
+*.bak_*
+
+# ── Documentation figures are intentionally tracked ───────────────
+# (docs/figures/*.png is committed; other PNGs are pipeline output)
+*.png
+!docs/figures/*.png
+
+# ── Credentials — never commit ────────────────────────────────────
+cave-secret.json
+.env
+*.token
+
+# ── Python ────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+dist/
+build/
+.ipynb_checkpoints/
+
+# ── Editors / OS ──────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
