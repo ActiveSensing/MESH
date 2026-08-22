@@ -48,3 +48,6 @@ build/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# local build logs
+bundle_build*.log

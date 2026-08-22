@@ -1264,7 +1264,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                 zSlider.max = zHi;
                 zSlider.dataset.validZ = vz ? JSON.stringify(vz) : '';
                 // Snap to nearest valid Z (0 may not be in valid_z)
-                const startZ = snapToValidZ(0);
+                const startZ = snapToValidZ(peakZ(ov));
                 zSlider.value = startZ;
                 currentZ = startZ;
                 const nSlices = vz ? vz.length : (zHi - zLo + 1);
@@ -1373,7 +1373,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
             currentZ = z;
             const nm = z * 40;
             if (z === 0) {
-                zValue.textContent = '0 (center)';
+                zValue.textContent = '0 (stack start)';
                 zNote.style.color = '#0a0';
             } else {
                 const s = z > 0 ? '+' : '';
@@ -1779,6 +1779,18 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                 return cur;  // already at highest valid Z
             }
         }
+        // The Z-slice a contact should open on: the one carrying the most contact
+        // area, not the first slice of the stack. Contacts taper off at the
+        // edges of their z-range, so opening at the lowest slice often shows
+        // barely any apposition even when the contact itself is substantial
+        // (measured: 11% of pixels at the first slice vs 23% at the peak).
+        function peakZ(ov) {
+            if (!ov || !ov.slice_detail || !ov.slice_detail.length) return 0;
+            let best = ov.slice_detail[0], zlo = ov.z_lo || 0;
+            for (const sd of ov.slice_detail)
+                if ((sd.area_um2 || 0) > (best.area_um2 || 0)) best = sd;
+            return (best.z_offset || 0);
+        }
         function snapToValidZ(z) {
             const raw = zSlider.dataset.validZ;
             if (!raw) return z;
@@ -1854,7 +1866,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
                 const vz = (ov && ov.valid_z && ov.valid_z.length) ? ov.valid_z : null;
                 zSlider.min = zLo; zSlider.max = zHi;
                 zSlider.dataset.validZ = vz ? JSON.stringify(vz) : '';
-                const startZ = snapToValidZ(0);
+                const startZ = snapToValidZ(peakZ(ov));
                 zSlider.value = startZ;
                 currentZ = startZ;
                 const nSlices = vz ? vz.length : (zHi - zLo + 1);
